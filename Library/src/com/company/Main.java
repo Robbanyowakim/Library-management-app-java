@@ -40,12 +40,14 @@ public class Main {
         } while (loop == 0);
     }
     private void menu (){
-        System.out.println(" --- --- --- --- ---");
+        System.out.println(" --- ---Books--- ---");
         System.out.println("| 1. Add Book       |");
         System.out.println("| 2. Remove Book    |");
         System.out.println("| 3. All Books      |");
+        System.out.println(" --- --Members-- ---");
         System.out.println("| 4. Add Member     |");
         System.out.println("| 5. Remove Member  |");
         System.out.println("| 6. All Members    |");
+        System.out.println(" --- --- --- --- ---");
     }
 }
