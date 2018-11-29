@@ -34,7 +34,12 @@ public class Main {
                     String authorsName = input.nextLine();
                     authorsList.add(authorsName);
                 }
-                libraryLogic.addBooks(ISBN,name,numberOfPages,language,publisher,authorsList);
+                libraryLogic.bookList.add(libraryLogic.addBooks(ISBN,name,numberOfPages,language,publisher,authorsList);
+            case 2:
+                for (int i = 0; i < libraryLogic.bookList.size(); i++){
+                    System.out.printf("[%d] %s",i,libraryLogic.bookList.get(i));
+                    // Jag är inte klar.
+                }
 
 
         }
@@ -44,5 +49,6 @@ public class Main {
     private void menu (){
         System.out.println(" --- --- --- --- ---");
         System.out.println("| 1. Add Books      |");
+        System.out.println("| 2. Remove Books   |");
     }
 }
