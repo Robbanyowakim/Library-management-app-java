@@ -34,7 +34,7 @@ public class Main {
                     String authorsName = input.nextLine();
                     authorsList.add(authorsName);
                 }
-                libraryLogic.addBook(ISBN,name,numberOfPages,language,publisher,authorsList);
+                libraryLogic.addBooks(ISBN,name,numberOfPages,language,publisher,authorsList);
 
 
         }
