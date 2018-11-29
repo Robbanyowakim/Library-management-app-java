@@ -12,4 +12,17 @@ package com.company;
             this.address = address;
             this.phoneNumber = phoneNumber;
         }
+
+        public String getSsn() {
+            return ssn;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        @Override
+        public String toString() {
+            return "Name: "+name+" SSN: "+ssn+" Address: "+address+" Phone number: "+phoneNumber;
+        }
     }
