@@ -18,4 +18,12 @@ public class Book  {
         this.publisher = publisher;
         this.authors = authors;
     }
+
+    public String getISBN() {
+        return ISBN;
+    }
+
+    public String getName() {
+        return name;
+    }
 }

@@ -8,10 +8,38 @@ public class LibraryLogic {
     public ArrayList <Book> bookList = new ArrayList<>();
     public ArrayList <Member> memberList = new ArrayList<>();
 
-    public Book addBooks (String ISBN,String name,int numberOfPages,String language, String publisher,ArrayList authorsList){
-        Book newBook = new Book(ISBN,name,numberOfPages,language,publisher,authorsList);
-        return newBook;
+
+
+    public  void addBook(){
+        System.out.print("Enter books ISBN number: ");
+        String ISBN = input.nextLine();
+        System.out.print("Enter the books name: ");
+        String name = input.nextLine();
+        System.out.print("Enter the number of pages: ");
+        int numberOfPages = input.nextInt();
+        input.nextLine();
+        System.out.print("Enter tha language of the book: ");
+        String language = input.nextLine();
+        System.out.print("Enter the publishers name: ");
+        String publisher = input.nextLine();
+        System.out.print("How many authors does the book have?");
+        int authors = input.nextInt();
+        input.nextLine();
+        ArrayList<String> authorsList = new ArrayList<>();
+        for (int i = 1; i <= authors; i++) {
+            System.out.printf("[%d] authors name: \n", i);
+            String authorsName = input.nextLine();
+            authorsList.add(authorsName);
+        }
+        bookList.add(new Book(ISBN, name, numberOfPages, language, publisher, authorsList));
     }
+
+    public void printBooks() {
+        for (int i = 0; i < bookList.size(); i++) {
+            System.out.println("Book " + i + ": Name: " + bookList.get(i).getName() + " ISBN: " + bookList.get(i).getISBN());
+        }
+    }
+
 
     public void addMember(){
         String name;
