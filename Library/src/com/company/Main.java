@@ -20,7 +20,7 @@ public class Main {
                     libraryLogic.addBook();
                     break;
                 case 2:
-
+                    libraryLogic.removeBook();
                     break;
                 case 3:
                     libraryLogic.printBooks();

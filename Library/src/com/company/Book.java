@@ -26,4 +26,44 @@ public class Book  {
     public String getName() {
         return name;
     }
+
+    public ArrayList getAuthors() {
+        return authors;
+    }
+
+    public int getNumberOfPages() {
+        return numberOfPages;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAuthors(ArrayList authors) {
+        this.authors = authors;
+    }
+
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 }

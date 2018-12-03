@@ -36,8 +36,21 @@ public class LibraryLogic {
 
     public void printBooks() {
         for (int i = 0; i < bookList.size(); i++) {
-            System.out.println("Book " + i + ": Name: " + bookList.get(i).getName() + " ISBN: " + bookList.get(i).getISBN());
+            System.out.println("Book " + i + ": Name: " + bookList.get(i).getName() + "|| ISBN: " + bookList.get(i).getISBN());
         }
+    }
+
+    public void removeBook (){
+        printBooks();
+        System.out.print("What book would you like to remove? (enter index number) ");
+        int remove = input.nextInt();
+        bookList.remove(remove);
+    }
+
+    public void editBook (){
+        printBooks();
+        System.out.print("What book would you like to edit? (enter index number) ");
+        // Robert Arbetar med denna
     }
 
 
