@@ -18,7 +18,7 @@ public class LibraryLogic {
         System.out.print("Enter the number of pages: ");
         int numberOfPages = input.nextInt();
         input.nextLine();
-        System.out.print("Enter tha language of the book: ");
+        System.out.print("Enter the language of the book: ");
         String language = input.nextLine();
         System.out.print("Enter the publishers name: ");
         String publisher = input.nextLine();
@@ -59,13 +59,14 @@ public class LibraryLogic {
         String ssn;
         String address;
         String phoneNumber;
-        System.out.println("Enter name: ");
+
+        System.out.print("Enter name: ");
         name = input.nextLine();
-        System.out.println("Enter SSN: ");
+        System.out.print("Enter SSN: ");
         ssn = input.nextLine();
-        System.out.println("Enter Address: ");
+        System.out.print("Enter Address: ");
         address = input.nextLine();
-        System.out.println("Enter phone number: ");
+        System.out.print("Enter phone number: ");
         phoneNumber = input.nextLine();
         memberList.add(new Member(ssn,name,address,phoneNumber));
     }
@@ -78,15 +79,70 @@ public class LibraryLogic {
             if (memberList.get(i).getSsn().equals(memberSSN)){
                 System.out.println("Removed "+memberList.get(i).getName()+" from system." );
                 memberList.remove(i);
-
             }
         }
     }
 
     public void printMembers(){
+        if (this.memberList.size()>0) {
         for (int i=0;i<memberList.size();i++){
             System.out.println("Member "+i+": "+memberList.get(i));
         }
+        }else{
+            System.out.println("List of members empty");
+        }
+    }
+
+    public void editMember(){
+        int choice;
+        int tmpchoice;
+        String tmpName;
+        String tmpSSN;
+        String tmpAddress;
+        String tmpPhoneNumber;
+
+        if (this.memberList.size()>0) {
+            this.printMembers();
+            System.out.print("Enter member number to edit: ");
+            choice = input.nextInt();
+            input.nextLine();
+            System.out.println("What do you want to edit?");
+            System.out.println("1. Name: " + this.memberList.get(choice).getName());
+            System.out.println("2. SSN: " + this.memberList.get(choice).getSsn());
+            System.out.println("3. Address: " + this.memberList.get(choice).getAddress());
+            System.out.println("4. Phone number: " + this.memberList.get(choice).getPhoneNumber());
+            tmpchoice = input.nextInt();
+            input.nextLine();
+            switch (tmpchoice) {
+                case 1:
+                    System.out.println("Old name: " + this.memberList.get(choice).getName());
+                    System.out.print("Enter new name: ");
+                    this.memberList.get(choice).setName(input.nextLine());
+                    break;
+                case 2:
+                    System.out.println("Old SSN: " + this.memberList.get(choice).getSsn());
+                    System.out.print("Enter new SSN: ");
+                    this.memberList.get(choice).setSsn(input.nextLine());
+                    break;
+                case 3:
+                    System.out.println("Old address: " + this.memberList.get(choice).getAddress());
+                    System.out.print("Enter new address: ");
+                    this.memberList.get(choice).setAddress(input.nextLine());
+                    break;
+                case 4:
+                    System.out.println("Old phone number: " + this.memberList.get(choice).getName());
+                    System.out.print("Enter new phone number: ");
+                    this.memberList.get(choice).setPhoneNumber(input.nextLine());
+                    break;
+                default:
+                    System.out.println("Not a valid option");
+                    break;
+            }
+        }else{
+            System.out.println("List of members empty");
+        }
+
+
     }
 
 }
