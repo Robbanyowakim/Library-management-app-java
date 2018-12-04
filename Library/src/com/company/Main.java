@@ -41,9 +41,16 @@ public class Main {
                 case 8:
                     libraryLogic.editMember();
                     break;
+                case 9:
+                    System.out.println("Exiting...");
+                    System.exit(1);
+                    break;
+                default:
+                    System.out.println("Please enter valid option.");
+                    break;
             }
 
-        } while (loop == 0);
+        } while (loop != 9);
     }
     private void menu (){
         System.out.println(" --- ---Books--- ---");
@@ -57,5 +64,6 @@ public class Main {
         System.out.println("| 7. All Members    |");
         System.out.println("| 8. Edit Member    |");
         System.out.println(" --- --- --- --- ---");
+        System.out.println("  9. Exit");
     }
 }

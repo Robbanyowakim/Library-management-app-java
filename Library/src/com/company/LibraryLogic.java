@@ -96,10 +96,6 @@ public class LibraryLogic {
     public void editMember(){
         int choice;
         int tmpchoice;
-        String tmpName;
-        String tmpSSN;
-        String tmpAddress;
-        String tmpPhoneNumber;
 
         if (this.memberList.size()>0) {
             this.printMembers();
