@@ -55,7 +55,59 @@ public class LibraryLogic {
     public void editBook (){
         printBooks();
         System.out.print("What book would you like to edit? (enter index number) ");
-        // Robert Arbetar med denna
+        int choice = input.nextInt();
+        System.out.println("What would you like to edit?");
+        System.out.println("1. Name: " + bookList.get(choice).getName());
+        System.out.println("2. ISBN: " + bookList.get(choice).getISBN());
+        System.out.println("3. Number of pages: " + bookList.get(choice).getNumberOfPages());
+        System.out.println("4. Language: " + bookList.get(choice).getLanguage());
+        System.out.println("5. Publisher: " + bookList.get(choice).getPublisher());
+        System.out.println("6. Authors: " + bookList.get(choice).getAuthors());
+        int edit = input.nextInt();
+        input.nextLine();
+        switch (edit){
+            case 1:
+                System.out.println("Old name: " + bookList.get(choice).getName());
+                System.out.print("Enter new name: ");
+                String newName = input.nextLine();
+                bookList.get(choice).setName(newName);
+                break;
+            case 2:
+                System.out.println("Old ISBN: " + bookList.get(choice).getISBN());
+                System.out.print("Enter new ISBN: ");
+                String newIBSN = input.nextLine();
+                bookList.get(choice).setISBN(newIBSN);
+                break;
+            case 3:
+                System.out.println("Old number of pages: " + bookList.get(choice).getNumberOfPages());
+                System.out.print("Enter new number of pages: ");
+                int newPages = input.nextInt();
+                input.nextLine();
+                bookList.get(choice).setNumberOfPages(newPages);
+                break;
+            case 4:
+                System.out.println("Old Language: " + bookList.get(choice).getLanguage());
+                System.out.print("Enter new Language: ");
+                String newLanguage = input.nextLine();
+                bookList.get(choice).setISBN(newLanguage);
+                break;
+            case 5:
+                System.out.println("Old Publisher: " + bookList.get(choice).getPublisher());
+                System.out.print("Enter new Publisher: ");
+                String newPublisher = input.nextLine();
+                bookList.get(choice).setISBN(newPublisher);
+                break;
+            case 6:
+                System.out.println("Old Authors: " + bookList.get(choice).getAuthors());
+                System.out.print("Enter new Authors: ");
+                String newAuthors = input.nextLine();
+                for (int i=0;i<bookList.get(choice).getAuthors().size();i++){
+                    bookList.get(choice).getAuthors().remove(0);
+                }
+                bookList.get(choice).setISBN(newAuthors);
+                break; //fixa metoden
+
+        }
     }
 
 
