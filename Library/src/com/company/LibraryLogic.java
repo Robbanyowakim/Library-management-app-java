@@ -35,8 +35,13 @@ public class LibraryLogic {
     }
 
     public void printBooks() {
+        if (bookList.size()>0){
+        System.out.println("---Books---");
         for (int i = 0; i < bookList.size(); i++) {
-            System.out.println("Book " + i + ": Name: " + bookList.get(i).getName() + "|| ISBN: " + bookList.get(i).getISBN());
+            System.out.println("Book ["+i+"]"+bookList.get(i));
+        }
+        }else{
+            System.out.println("List of books empty");
         }
     }
 
@@ -85,8 +90,9 @@ public class LibraryLogic {
 
     public void printMembers(){
         if (this.memberList.size()>0) {
+            System.out.println("---Members---");
         for (int i=0;i<memberList.size();i++){
-            System.out.println("Member "+i+": "+memberList.get(i));
+            System.out.println("Member ["+i+"] "+memberList.get(i));
         }
         }else{
             System.out.println("List of members empty");

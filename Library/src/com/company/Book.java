@@ -66,4 +66,15 @@ public class Book  {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
+
+    @Override
+    public String toString() {
+        return
+                " ISBN: " + ISBN +
+                "|| Name: " + name +
+                "|| Pages: " + numberOfPages +
+                "|| Language: " + language +
+                "|| Publisher: " + publisher +
+                        "|| Authors: " + authors;
+    }
 }
