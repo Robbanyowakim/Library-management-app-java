@@ -11,7 +11,28 @@ public class Main {
         Scanner input = new Scanner(System.in);
         Main myApp = new Main();
         LibraryLogic libraryLogic = new LibraryLogic();
-        Transaction transaction = new Transaction();
+
+        //hårdkodning
+        ArrayList <String> b1 = new ArrayList<>();
+        b1.add("J.K Rowling");
+        ArrayList <String> b2 = new ArrayList<>();
+        b2.add("Suzanne Collins");
+        ArrayList <String> b3 = new ArrayList<>();
+        b3.add("Veronica Roth");
+        ArrayList <String> b4 = new ArrayList<>();
+        b4.add("Stephenie Meyer");
+
+
+        libraryLogic.bookList.add( new Book ("0-2323-2434-7","Harry Potter and the order of the phoneix", 800,"English","Bloomsburgy",b1));
+        libraryLogic.bookList.add(new Book ("0-4453-3412-6","The Hunger Games",578,"English","Scholastic Press",b2));
+        libraryLogic.bookList.add(new Book ("0-5846-6782-1","Divergent",757,"English","Katherine Tegen Books",b3));
+        libraryLogic.bookList.add(new Book ("0-2321-1231-4","Twilight",231,"English","Brown and Company",b4));
+
+        libraryLogic.memberList.add(new Member("890821-6584","Bobby Svensson","Trävägen 25","0726378763"));
+        libraryLogic.memberList.add(new Member("950103-9751","Fillip Sten","Motorvägen 67","0707999599"));
+        libraryLogic.memberList.add(new Member("770417-5571","Olivia Persson","Kungensväg 1","0700272755"));
+        libraryLogic.memberList.add(new Member("991212-9132","Sara von Ascheberg","Pajasvägen 1","0715717811"));
+
         int loop = 0;
         do {
 
@@ -45,10 +66,10 @@ public class Main {
                     libraryLogic.editMember();
                     break;
                 case 10:
-                    transaction.issueBook();
+                    libraryLogic.addTransaction();
                     break;
                 case 11:
-                    transaction.printTransactions();
+                    libraryLogic.printTransactions();
                     break;
                 case 12:
                     System.out.println("Exiting...");

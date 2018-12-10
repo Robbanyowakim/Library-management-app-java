@@ -7,10 +7,29 @@ public class LibraryLogic {
     Scanner input = new Scanner(System.in);
     public ArrayList <Book> bookList = new ArrayList<>();
     public ArrayList <Member> memberList = new ArrayList<>();
+    public ArrayList <Transaction> transactionList = new ArrayList<>();
 
 
+    public void addTransaction(){
+        int bookIndex;
+        int memberIndex;
+        System.out.println("Enter Member Index: ");
+        memberIndex = input.nextInt();
+        System.out.println("Enter Book Index: ");
+        bookIndex = input.nextInt();
 
+        Transaction transaction = new Transaction(memberIndex,bookIndex);
+        transactionList.add(transaction);
+    }
 
+    public void printTransactions(){
+        for (int i=0;i<transactionList.size();i++){
+            System.out.println("Member ["+transactionList.get(i).getMemberIndex()+"] "+memberList.get(transactionList.get(i).getMemberIndex()));
+            System.out.println("has");
+            System.out.print("Book ["+transactionList.get(i).getBookIndex()+"] "+ bookList.get(transactionList.get(i).getBookIndex()));
+            System.out.println();
+        }
+    }
 
     public  void addBook(){
         System.out.print("Enter books ISBN number: ");
