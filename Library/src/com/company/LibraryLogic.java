@@ -99,13 +99,70 @@ public class LibraryLogic {
                 break;
             case 6:
                 System.out.println("Old Authors: " + bookList.get(choice).getAuthors());
-                System.out.print("Enter new Authors: ");
-                String newAuthors = input.nextLine();
+                System.out.print("Enter how many authors: ");
+                int authorsNum = input.nextInt();
+                input.nextLine();
+                ArrayList<String> newAuthors = new ArrayList<>();
+                for (int i = 1; i <= authorsNum; i++) {
+                    System.out.printf("[%d] authors name: \n", i);
+                    String authorsName = input.nextLine();
+                    newAuthors.add(authorsName);
+                }
                 for (int i=0;i<bookList.get(choice).getAuthors().size();i++){
                     bookList.get(choice).getAuthors().remove(0);
                 }
-                bookList.get(choice).setISBN(newAuthors);
-                break; //fixa metoden
+                bookList.get(choice).setAuthors(newAuthors);
+                break;
+
+        }
+    }
+    public void searchBook(){
+        System.out.println("--- What do you want to search for? ---");
+        System.out.println("1. Book name");
+        System.out.println("2. Author name");
+        int action = input.nextInt();
+        input.nextLine();
+        switch (action){
+            case 1:
+                System.out.print("Enter book name:");
+                String searchName = input.nextLine().toUpperCase();
+
+                for (Book book : bookList){
+                    if (book.getName().compareTo(searchName) > 0){
+                        System.out.println("--- Info of the book ---");
+                        System.out.println("Name: " + book.getName());
+                        System.out.println("ISBN: " + book.getISBN());
+                        System.out.println("Number of pages: " + book.getNumberOfPages());
+                        System.out.println("Language: " + book.getLanguage());
+                        System.out.println("Publisher: " + book.getPublisher());
+                        System.out.println("Authors: " + book.getAuthors());
+                        break;
+                    }
+                    else if (book.getName().compareTo(searchName) == 0){
+                        System.out.println("--- No book with that name ---");
+                        break;
+                    }
+                }
+            case 2:
+                System.out.print("Enter the authors name: ");
+                String searchAuthors = input.nextLine().toUpperCase();
+
+                for (Book authors : bookList){
+                    if (authors.getName().compareTo(searchAuthors) > 0){
+                        System.out.println("--- Info of the book ---");
+                        System.out.println("Name: " + authors.getName());
+                        System.out.println("ISBN: " + authors.getISBN());
+                        System.out.println("Number of pages: " + authors.getNumberOfPages());
+                        System.out.println("Language: " + authors.getLanguage());
+                        System.out.println("Publisher: " + authors.getPublisher());
+                        System.out.println("Authors: " + authors.getAuthors());
+                        break;
+                    }
+                    else if (authors.getName().compareTo(searchAuthors) == 0){
+                        System.out.println("--- No authors with that name ---");
+                        break;
+                    }
+                }
 
         }
     }
