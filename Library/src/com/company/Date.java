@@ -10,4 +10,50 @@ public class Date {
         this.month = month;
         this.day = day;
     }
+
+    @Override
+    public String toString() {
+        String x = "";
+        switch (month){
+            case 1:
+                x = "January";
+                break;
+            case 2:
+                x = "February";
+                break;
+            case 3:
+                x = "Mars";
+                break;
+            case 4:
+                x = "April";
+                break;
+            case 5:
+                x = "May";
+                break;
+            case 6:
+                x = "June";
+                break;
+            case 7:
+                x = "July";
+                break;
+            case 8:
+                x = "August";
+                break;
+            case 9:
+                x = "September";
+                break;
+            case 10:
+                x = "October";
+                break;
+            case 11:
+                x = "November";
+                break;
+            case 12:
+                x = "December";
+                break;
+        }
+
+        return day+" of " + x + " "+year;
+
+    }
 }
