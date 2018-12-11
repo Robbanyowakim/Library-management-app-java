@@ -13,24 +13,115 @@ public class LibraryLogic {
     public void addTransaction(){
         int bookIndex;
         int memberIndex;
+
+        int day;
+        int month;
+        int monthx;
+        int year;
+        int yearx;
+
+        System.out.println("You are about to issue a book to a member");
+        printMembers();
         System.out.println("Enter Member Index: ");
         memberIndex = input.nextInt();
+        printBooks();
         System.out.println("Enter Book Index: ");
         bookIndex = input.nextInt();
+        System.out.println("What year is it?(YYYY)");
+        year = input.nextInt();
+        input.nextLine();
+        System.out.println("What month is it?(MM)");
+        month = input.nextInt();
 
-        Transaction transaction = new Transaction(memberIndex,bookIndex);
+        input.nextLine();
+        System.out.println("What day is it?(DD)");
+        day = input.nextInt();
+        input.nextLine();
+
+        yearx = year;
+        monthx = month;
+        if (monthx==12){
+            monthx=0;
+            yearx++;
+        }
+
+
+        Date transactionDate = new Date(year,month,day);
+        Date dueDate = new Date(yearx,monthx+1,day);
+
+        Transaction transaction = new Transaction(memberIndex,bookIndex,transactionDate,dueDate);
         transactionList.add(transaction);
+        System.out.println("Success!");
     }
 
     public void printTransactions(){
-        for (int i=0;i<transactionList.size();i++){
-            System.out.println("Member ["+transactionList.get(i).getMemberIndex()+"] "+memberList.get(transactionList.get(i).getMemberIndex()));
-            System.out.println("has");
-            System.out.print("Book ["+transactionList.get(i).getBookIndex()+"] "+ bookList.get(transactionList.get(i).getBookIndex()));
+        if (transactionList.size()>0){
+        for (int i=0;i<transactionList.size();i++) {
+            System.out.println("Transaction [" + i + "]" + "                  Issued: " + transactionList.get(i).getTransactionDate() + " || Return date: " + transactionList.get(i).getDueDate());
+            System.out.println("Member [" + transactionList.get(i).getMemberIndex() + "] " + memberList.get(transactionList.get(i).getMemberIndex()));
+            System.out.println("Book [" + transactionList.get(i).getBookIndex() + "] " + bookList.get(transactionList.get(i).getBookIndex()));
             System.out.println();
+        }
+        }else{
+            System.out.println("--- No transactions found ---");
         }
     }
 
+    public void lookupMember(){
+        String choice;
+        System.out.println("You are about to lookup a member");
+        System.out.println("Enter Member SSN(YYMMDD-XXXX):");
+        choice = input.nextLine();
+
+
+        for (int i=0;i<memberList.size();i++){
+            if (memberList.get(i).getSsn().equals(choice)){
+                System.out.println("Member ["+i+"] "+memberList.get(i));
+                System.out.println();
+                for (int j=0;j<transactionList.size();j++){
+                    if (transactionList.get(j).getMemberIndex()==i){
+                        System.out.println("Transaction [" + j + "]" + "                  Issued: " + transactionList.get(j).getTransactionDate() + " || Return date: " + transactionList.get(j).getDueDate());
+                        System.out.println("Book [" + transactionList.get(j).getBookIndex() + "] " + bookList.get(transactionList.get(j).getBookIndex()));
+                        System.out.println();
+                    }
+                }
+            }
+        }
+
+    }
+
+    public void returnBook(){
+        int choice;
+        System.out.println("You are about to return a book");
+        printTransactions();
+        System.out.println("Enter Transaction-number to return book:");
+        choice = input.nextInt();
+        input.nextLine();
+
+        transactionList.remove(choice);
+        System.out.println("Success!");
+    }
+
+    public void extendBook() {
+        if (transactionList.size() > 0) {
+            int choice;
+            System.out.println("You are about to extend due-date");
+            printTransactions();
+            System.out.println("Enter transaction-number to extend by a month:");
+            choice = input.nextInt();
+            input.nextLine();
+
+            if (transactionList.get(choice).getDueDate().getMonth() == 12) {
+                transactionList.get(choice).getDueDate().setMonth(1);
+                transactionList.get(choice).getDueDate().setYear(transactionList.get(choice).getDueDate().getYear() + 1);
+            } else {
+                transactionList.get(choice).getDueDate().setMonth(transactionList.get(choice).getDueDate().getMonth() + 1);
+            }
+            System.out.println("Success!");
+        }else {
+            System.out.println("--- No transactions found ---");
+        }
+    }
     public  void addBook(){
         System.out.print("Enter books ISBN number: ");
         String ISBN = input.nextLine();
@@ -62,7 +153,7 @@ public class LibraryLogic {
             System.out.println("Book ["+i+"]"+bookList.get(i));
         }
         }else{
-            System.out.println("List of books empty");
+            System.out.println("--- List of books empty ---");
         }
     }
 
@@ -71,6 +162,7 @@ public class LibraryLogic {
         System.out.print("What book would you like to remove? (enter index number) ");
         int remove = input.nextInt();
         bookList.remove(remove);
+        System.out.println("Success!");
     }
 
     public void editBook (){
@@ -136,6 +228,7 @@ public class LibraryLogic {
                 break;
 
         }
+        System.out.println("Success!");
     }
     public void searchBook(){
         System.out.println("--- What do you want to search for? ---");
@@ -150,7 +243,7 @@ public class LibraryLogic {
 
                 for (Book book : bookList){
                     if (book.getName().compareTo(searchName) > 0){
-                        System.out.println("--- Info of the book ---");
+                        System.out.println("--- Info about the book ---");
                         System.out.println("Name: " + book.getName());
                         System.out.println("ISBN: " + book.getISBN());
                         System.out.println("Number of pages: " + book.getNumberOfPages());
@@ -197,7 +290,7 @@ public class LibraryLogic {
 
         System.out.print("Enter name: ");
         name = input.nextLine();
-        System.out.print("Enter SSN: ");
+        System.out.print("Enter SSN(YYMMDD-XXXX): ");
         ssn = input.nextLine();
         System.out.print("Enter Address: ");
         address = input.nextLine();
@@ -207,15 +300,11 @@ public class LibraryLogic {
     }
 
     public void removeMember(){
-        String memberSSN;
-        System.out.println("Enter SSN of member:");
-        memberSSN = input.nextLine();
-        for (int i=0;i<memberList.size();i++){
-            if (memberList.get(i).getSsn().equals(memberSSN)){
-                System.out.println("Removed "+memberList.get(i).getName()+" from system." );
-                memberList.remove(i);
-            }
-        }
+        String memberIndex;
+        System.out.println("Enter index of member:");
+        memberIndex = input.nextLine();
+        memberList.remove(memberIndex);
+        System.out.println("Success!");
     }
 
     public void printMembers(){
@@ -253,7 +342,7 @@ public class LibraryLogic {
                     break;
                 case 2:
                     System.out.println("Old SSN: " + this.memberList.get(choice).getSsn());
-                    System.out.print("Enter new SSN: ");
+                    System.out.print("Enter new SSN(YYMMDD-XXXX): ");
                     this.memberList.get(choice).setSsn(input.nextLine());
                     break;
                 case 3:
@@ -270,6 +359,7 @@ public class LibraryLogic {
                     System.out.println("Not a valid option");
                     break;
             }
+            System.out.println("Success!");
         }else{
             System.out.println("List of members empty");
         }

@@ -55,6 +55,9 @@ public class Main {
                 case 6:
                     libraryLogic.addMember();
                     break;
+                case 5:
+                    libraryLogic.searchBook();
+                    break;
                 case 7:
                     libraryLogic.printMembers();
                     libraryLogic.removeMember();
@@ -66,12 +69,21 @@ public class Main {
                     libraryLogic.editMember();
                     break;
                 case 10:
-                    libraryLogic.addTransaction();
+                    libraryLogic.lookupMember();
                     break;
                 case 11:
-                    libraryLogic.printTransactions();
+                    libraryLogic.addTransaction();
                     break;
                 case 12:
+                    libraryLogic.returnBook();
+                    break;
+                case 13:
+                    libraryLogic.printTransactions();
+                    break;
+                case 14:
+                    libraryLogic.extendBook();
+                    break;
+                case 15:
                     System.out.println("Exiting...");
                     System.exit(1);
                     break;
@@ -94,9 +106,14 @@ public class Main {
         System.out.println("| 7. Remove Member  |");
         System.out.println("| 8. All Members    |");
         System.out.println("| 9. Edit Member    |");
+        System.out.println("| 10. Lookup Member |");
+        System.out.println(" --- ---Issue--- ---");
+        System.out.println("| 11. Issue Book    |");
+        System.out.println("| 12. Return Book   |");
+        System.out.println("| 13. All Issues    |");
+        System.out.println("| 14. Extend        |");
         System.out.println(" --- --- --- --- ---");
-        System.out.println("| 10. Issue book    |");
-        System.out.println("| 11. All Issues    |");
-        System.out.println("  12. Exit");
+        System.out.println("  15. Exit");
+        System.out.print("Your choice: ");
     }
 }

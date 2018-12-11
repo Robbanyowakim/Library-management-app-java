@@ -70,11 +70,11 @@ public class Book  {
     @Override
     public String toString() {
         return
-                " ISBN: " + ISBN +
-                "|| Name: " + name +
-                "|| Pages: " + numberOfPages +
-                "|| Language: " + language +
-                "|| Publisher: " + publisher +
-                        "|| Authors: " + authors;
+                "|| ISBN: " + ISBN +
+                " || Name: " + name +
+                " || Pages: " + numberOfPages +
+                " || Language: " + language +
+                " || Publisher: " + publisher +
+                        " || Authors: " + authors;
     }
 }

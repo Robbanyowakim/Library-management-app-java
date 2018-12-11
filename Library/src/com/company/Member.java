@@ -47,6 +47,7 @@ package com.company;
 
         @Override
         public String toString() {
-            return "|| Name: "+name+" || SSN: "+ssn+" || Address: "+address+" || Phone number: "+phoneNumber;
+            return  "|| Name: "+name+
+                    " || SSN: "+ssn+" || Address: "+address+" || Phone number: "+phoneNumber;
         }
     }
