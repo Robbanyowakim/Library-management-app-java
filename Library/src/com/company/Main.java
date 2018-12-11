@@ -50,7 +50,7 @@ public class Main {
                     libraryLogic.printBooks();
                     break;
                 case 4:
-                    libraryLogic.editBook(); //OBS INTE KLAR
+                    libraryLogic.editBook();
                     break;
                 case 6:
                     libraryLogic.addMember();
