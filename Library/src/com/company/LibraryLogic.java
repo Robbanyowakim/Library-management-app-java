@@ -161,6 +161,16 @@ public class LibraryLogic {
         printBooks();
         System.out.print("What book would you like to remove? (enter index number) ");
         int remove = input.nextInt();
+        input.nextLine();
+        for (int i=0;i<transactionList.size();i++){
+
+            if (transactionList.get(i).getBookIndex()==remove){
+                System.out.println("Removed Transaction "+i);
+                transactionList.remove(i);
+                i--;
+            }
+        }
+        System.out.println("Removed book "+remove);
         bookList.remove(remove);
         System.out.println("Success!");
     }
@@ -306,9 +316,18 @@ public class LibraryLogic {
     }
 
     public void removeMember(){
-        String memberIndex;
+        int memberIndex;
         System.out.println("Enter index of member:");
-        memberIndex = input.nextLine();
+        memberIndex = input.nextInt();
+        input.nextLine();
+        for (int i=0;i<transactionList.size();i++){
+            if (transactionList.get(i).getMemberIndex()==memberIndex){
+                System.out.println("Removed Transaction "+i);
+                transactionList.remove(i);
+                i--;
+            }
+        }
+        System.out.println("Removed Member "+memberIndex);
         memberList.remove(memberIndex);
         System.out.println("Success!");
     }
@@ -330,7 +349,7 @@ public class LibraryLogic {
 
         if (this.memberList.size()>0) {
             this.printMembers();
-            System.out.print("Enter member number to edit: ");
+            System.out.print("Enter member index to edit: ");
             choice = input.nextInt();
             input.nextLine();
             System.out.println("What do you want to edit?");
