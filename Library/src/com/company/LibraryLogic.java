@@ -212,13 +212,13 @@ public class LibraryLogic {
                 System.out.println("Old Language: " + bookList.get(choice).getLanguage());
                 System.out.print("Enter new Language: ");
                 String newLanguage = input.nextLine();
-                bookList.get(choice).setISBN(newLanguage);
+                bookList.get(choice).setLanguage(newLanguage);
                 break;
             case 5:
                 System.out.println("Old Publisher: " + bookList.get(choice).getPublisher());
                 System.out.print("Enter new Publisher: ");
                 String newPublisher = input.nextLine();
-                bookList.get(choice).setISBN(newPublisher);
+                bookList.get(choice).setPublisher(newPublisher);
                 break;
             case 6:
                 System.out.println("Old Authors: " + bookList.get(choice).getAuthors());
