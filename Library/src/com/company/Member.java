@@ -1,6 +1,8 @@
 package com.company;
 
-    public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
         private String ssn;
         private String name;
         private String address;

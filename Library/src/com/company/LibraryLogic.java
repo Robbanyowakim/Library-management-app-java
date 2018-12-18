@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.*;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -455,6 +457,78 @@ public class LibraryLogic {
 
 
     }
+
+    public void writeBook(){
+
+        try {
+            FileOutputStream fos = new FileOutputStream("book.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(bookList);
+            oos.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void writeMember(){
+
+        try {
+            FileOutputStream fos = new FileOutputStream("member.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(memberList);
+            oos.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void writeTransaction(){
+
+        try {
+            FileOutputStream fos = new FileOutputStream("transaction.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(transactionList);
+            oos.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
+    public void readBook(){
+        try {
+            FileInputStream fis = new FileInputStream("book.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            bookList = (ArrayList) ois.readObject();
+            ois.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void readMember(){
+        try {
+            FileInputStream fis = new FileInputStream("member.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            memberList = (ArrayList) ois.readObject();
+            ois.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void readTransaction(){
+        try {
+            FileInputStream fis = new FileInputStream("transaction.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            transactionList = (ArrayList) ois.readObject();
+            ois.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
+
 
 }
 

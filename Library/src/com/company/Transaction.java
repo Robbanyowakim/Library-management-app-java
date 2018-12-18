@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Transaction {
+public class Transaction implements Serializable {
    private int bookIndex;
     private int memberIndex;
     private Date transactionDate;

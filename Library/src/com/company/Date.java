@@ -1,6 +1,8 @@
 package com.company;
 
-public class Date {
+import java.io.Serializable;
+
+public class Date implements Serializable {
     private int year;
     private int month;
     private int day;

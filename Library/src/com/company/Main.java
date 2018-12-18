@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,27 +14,6 @@ public class Main {
         Main myApp = new Main();
         LibraryLogic libraryLogic = new LibraryLogic();
 
-
-        ArrayList <String> b1 = new ArrayList<>();
-        b1.add("J.K Rowling");
-        ArrayList <String> b2 = new ArrayList<>();
-        b2.add("Suzanne Collins");
-        ArrayList <String> b3 = new ArrayList<>();
-        b3.add("Veronica Roth");
-        ArrayList <String> b4 = new ArrayList<>();
-        b4.add("Stephenie Meyer");
-
-
-        libraryLogic.bookList.add( new Book ("0-2323-2434-7","Harry Potter and the order of the phoneix", 800,"English","Bloomsburgy",b1,"Fantasy"));
-        libraryLogic.bookList.add(new Book ("0-4453-3412-6","The Hunger Games",578,"English","Scholastic Press",b2, "Science Fiction"));
-        libraryLogic.bookList.add(new Book ("0-5846-6782-1","Divergent",757,"English","Katherine Tegen Books",b3,"Science Fiction"));
-        libraryLogic.bookList.add(new Book ("0-2321-1231-4","Twilight",231,"English","Brown and Company",b4, "Fantasy"));
-
-        libraryLogic.memberList.add(new Member("890821-6584","Bobby Svensson","Trävägen 25","0726378763"));
-        libraryLogic.memberList.add(new Member("950103-9751","Fillip Sten","Motorvägen 67","0707999599"));
-        libraryLogic.memberList.add(new Member("770417-5571","Olivia Persson","Kungensväg 1","0700272755"));
-        libraryLogic.memberList.add(new Member("991212-9132","Sara von Ascheberg","Pajasvägen 1","0715717811"));
-
         int loop = 0;
         do {
 
@@ -40,53 +21,63 @@ public class Main {
             int a = input.nextInt();
             input.nextLine();
             switch (a) {
-                case 1:
+                case 1://add book
                     libraryLogic.addBook();
                     break;
-                case 2:
+                case 2://remove book
                     libraryLogic.removeBook();
                     break;
-                case 3:
+                case 3://print list of books
                     libraryLogic.printBooks();
                     break;
-                case 4:
+                case 4://edit book
                     libraryLogic.editBook();
+                    break;
+                case 5://search for book
+                    libraryLogic.searchBook();
                     break;
                 case 6:
                     libraryLogic.showCategories();
                     break;
-                case 7:
+                case 7://add member
                     libraryLogic.addMember();
                     break;
-                case 5:
-                    libraryLogic.searchBook();
-                    break;
-                case 8:
+                case 8://remove member
                     libraryLogic.printMembers();
                     libraryLogic.removeMember();
                     break;
-                case 9:
+                case 9://print list of members
                     libraryLogic.printMembers();
                     break;
-                case 10:
+                case 10://edit member
                     libraryLogic.editMember();
                     break;
-                case 11:
+                case 11://search for member
                     libraryLogic.lookupMember();
                     break;
-                case 12:
+                case 12://add issue
                     libraryLogic.addTransaction();
                     break;
-                case 13:
+                case 13:// return book
                     libraryLogic.returnBook();
                     break;
-                case 14:
+                case 14://print issues
                     libraryLogic.printTransactions();
                     break;
-                case 15:
+                case 15:// extend duedate
                     libraryLogic.extendBook();
                     break;
-                case 16:
+                case 16://save
+                    libraryLogic.writeBook();
+                    libraryLogic.writeMember();
+                    libraryLogic.writeTransaction();
+                    break;
+                case 17://load
+                    libraryLogic.readBook();
+                    libraryLogic.readMember();
+                    libraryLogic.readTransaction();
+                    break;
+                case 18://exit
                     System.out.println("Exiting...");
                     System.exit(1);
                     break;
@@ -117,7 +108,9 @@ public class Main {
         System.out.println("| 14. All Issues    |");
         System.out.println("| 15. Extend        |");
         System.out.println(" --- --- --- --- ---");
-        System.out.println("  16. Exit");
+        System.out.println("  16. Save          ");
+        System.out.println("  17. Load          ");
+        System.out.println("  18. Exit");
         System.out.print("Your choice: ");
     }
 }
