@@ -10,6 +10,55 @@ public class LibraryLogic {
     public ArrayList <Transaction> transactionList = new ArrayList<>();
 
 
+
+    public void showCategories(){
+        System.out.println("--- Categories available ---");
+        System.out.println("[0] Fantasy");
+        System.out.println("[1] Thriller");
+        System.out.println("[2] Science Fiction");
+        int choice = input.nextInt();
+        input.nextLine();
+        if (choice == 0){
+            System.out.println("--- Fantasy books ---");
+            int countFantasy = 0;
+            for (int i = 0; i < bookList.size(); i++){
+                if (bookList.get(i).getCategory().equals("Fantasy")) {
+                    System.out.println(bookList.get(i).toString());
+                    countFantasy++;
+                }
+            }
+            if (countFantasy == 0){
+                System.out.println("No books in this category!");
+            }
+        } else if (choice == 1){
+            System.out.println("--- Thriller books ---");
+            int countThriller =0;
+            for (int i = 0; i < bookList.size(); i++){
+                if (bookList.get(i).getCategory().equals("Thriller")) {
+                    System.out.println(bookList.get(i).toString());
+                    countThriller++;
+                }
+                }
+            if (countThriller == 0){
+                System.out.println("No books in this category!");
+            }
+        } else if (choice == 2){
+            System.out.println("--- Science Fiction ---");
+            int countScience =0;
+            for (int i = 0; i < bookList.size(); i++){
+                if (bookList.get(i).getCategory().equals("Science Fiction")){
+                    System.out.println(bookList.get(i).toString());
+                    countScience++;
+                }
+            }
+            if (countScience == 0){
+                System.out.println("No books in this category!");
+            }
+        }
+
+    }
+
+
     public void addTransaction(){
         int bookIndex;
         int memberIndex;
@@ -143,7 +192,9 @@ public class LibraryLogic {
             String authorsName = input.nextLine();
             authorsList.add(authorsName);
         }
-        bookList.add(new Book(ISBN, name, numberOfPages, language, publisher, authorsList));
+        System.out.println("Enter name of category: ");
+        String category = input.nextLine();
+        bookList.add(new Book(ISBN, name, numberOfPages, language, publisher, authorsList,category));
     }
 
     public void printBooks() {
@@ -186,6 +237,7 @@ public class LibraryLogic {
         System.out.println("4. Language: " + bookList.get(choice).getLanguage());
         System.out.println("5. Publisher: " + bookList.get(choice).getPublisher());
         System.out.println("6. Authors: " + bookList.get(choice).getAuthors());
+        System.out.println("7. Category: " + bookList.get(choice).getCategory());
         int edit = input.nextInt();
         input.nextLine();
         switch (edit){
@@ -236,6 +288,12 @@ public class LibraryLogic {
                 }
                 bookList.get(choice).setAuthors(newAuthors);
                 break;
+            case 7:
+                System.out.println("Old Category: " + bookList.get(choice).getCategory());
+                System.out.print("Enter new Category: ");
+                String newCategory = input.nextLine();
+                bookList.get(choice).setCategory(newCategory);
+                break;
 
         }
         System.out.println("Success!");
@@ -244,6 +302,7 @@ public class LibraryLogic {
         System.out.println("--- What do you want to search for? ---");
         System.out.println("1. Book name");
         System.out.println("2. Author name");
+        System.out.println("3. Category");
         System.out.print("Your choice: ");
         int action = input.nextInt();
         input.nextLine();
@@ -262,6 +321,7 @@ public class LibraryLogic {
                         System.out.println("Language: " + bookList.get(i).getLanguage());
                         System.out.println("Publisher: " + bookList.get(i).getPublisher());
                         System.out.println("Authors: " + bookList.get(i).getAuthors());
+                        System.out.println("Category: " + bookList.get(i).getCategory());
                         System.out.println("Index: " + i);
                         count = count + 1;
                         break;
@@ -286,6 +346,7 @@ public class LibraryLogic {
                         System.out.println("Language: " + bookList.get(i).getLanguage());
                         System.out.println("Publisher: " + bookList.get(i).getPublisher());
                         System.out.println("Authors: " + bookList.get(i).getAuthors());
+                        System.out.println("Category: " + bookList.get(i).getCategory());
                         count1++;
                         break;
                     }
@@ -293,6 +354,9 @@ public class LibraryLogic {
                 if (count1 == 0){
                     System.out.println("--- No book with that authors ---");
                 }
+            case 3:
+                showCategories();
+                break;
 
         }
     }

@@ -12,7 +12,7 @@ public class Main {
         Main myApp = new Main();
         LibraryLogic libraryLogic = new LibraryLogic();
 
-        //hårdkodning
+
         ArrayList <String> b1 = new ArrayList<>();
         b1.add("J.K Rowling");
         ArrayList <String> b2 = new ArrayList<>();
@@ -23,10 +23,10 @@ public class Main {
         b4.add("Stephenie Meyer");
 
 
-        libraryLogic.bookList.add( new Book ("0-2323-2434-7","Harry Potter and the order of the phoneix", 800,"English","Bloomsburgy",b1));
-        libraryLogic.bookList.add(new Book ("0-4453-3412-6","The Hunger Games",578,"English","Scholastic Press",b2));
-        libraryLogic.bookList.add(new Book ("0-5846-6782-1","Divergent",757,"English","Katherine Tegen Books",b3));
-        libraryLogic.bookList.add(new Book ("0-2321-1231-4","Twilight",231,"English","Brown and Company",b4));
+        libraryLogic.bookList.add( new Book ("0-2323-2434-7","Harry Potter and the order of the phoneix", 800,"English","Bloomsburgy",b1,"Fantasy"));
+        libraryLogic.bookList.add(new Book ("0-4453-3412-6","The Hunger Games",578,"English","Scholastic Press",b2, "Science Fiction"));
+        libraryLogic.bookList.add(new Book ("0-5846-6782-1","Divergent",757,"English","Katherine Tegen Books",b3,"Science Fiction"));
+        libraryLogic.bookList.add(new Book ("0-2321-1231-4","Twilight",231,"English","Brown and Company",b4, "Fantasy"));
 
         libraryLogic.memberList.add(new Member("890821-6584","Bobby Svensson","Trävägen 25","0726378763"));
         libraryLogic.memberList.add(new Member("950103-9751","Fillip Sten","Motorvägen 67","0707999599"));
@@ -53,37 +53,40 @@ public class Main {
                     libraryLogic.editBook();
                     break;
                 case 6:
+                    libraryLogic.showCategories();
+                    break;
+                case 7:
                     libraryLogic.addMember();
                     break;
                 case 5:
                     libraryLogic.searchBook();
                     break;
-                case 7:
+                case 8:
                     libraryLogic.printMembers();
                     libraryLogic.removeMember();
                     break;
-                case 8:
+                case 9:
                     libraryLogic.printMembers();
                     break;
-                case 9:
+                case 10:
                     libraryLogic.editMember();
                     break;
-                case 10:
+                case 11:
                     libraryLogic.lookupMember();
                     break;
-                case 11:
+                case 12:
                     libraryLogic.addTransaction();
                     break;
-                case 12:
+                case 13:
                     libraryLogic.returnBook();
                     break;
-                case 13:
+                case 14:
                     libraryLogic.printTransactions();
                     break;
-                case 14:
+                case 15:
                     libraryLogic.extendBook();
                     break;
-                case 15:
+                case 16:
                     System.out.println("Exiting...");
                     System.exit(1);
                     break;
@@ -101,19 +104,20 @@ public class Main {
         System.out.println("| 3. All Books      |");
         System.out.println("| 4. Edit Book      |");
         System.out.println("| 5. Search         |");
+        System.out.println("| 6. Show Categories|");
         System.out.println(" --- --Members-- ---");
-        System.out.println("| 6. Add Member     |");
-        System.out.println("| 7. Remove Member  |");
-        System.out.println("| 8. All Members    |");
-        System.out.println("| 9. Edit Member    |");
-        System.out.println("| 10. Lookup Member |");
+        System.out.println("| 7. Add Member     |");
+        System.out.println("| 8. Remove Member  |");
+        System.out.println("| 9. All Members    |");
+        System.out.println("| 10. Edit Member   |");
+        System.out.println("| 11. Lookup Member |");
         System.out.println(" --- ---Issue--- ---");
-        System.out.println("| 11. Issue Book    |");
-        System.out.println("| 12. Return Book   |");
-        System.out.println("| 13. All Issues    |");
-        System.out.println("| 14. Extend        |");
+        System.out.println("| 12. Issue Book    |");
+        System.out.println("| 13. Return Book   |");
+        System.out.println("| 14. All Issues    |");
+        System.out.println("| 15. Extend        |");
         System.out.println(" --- --- --- --- ---");
-        System.out.println("  15. Exit");
+        System.out.println("  16. Exit");
         System.out.print("Your choice: ");
     }
 }

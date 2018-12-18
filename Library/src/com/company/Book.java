@@ -9,14 +9,16 @@ public class Book  {
     private int numberOfPages;
     private String language;
     private String publisher;
+    private String category;
 
-    public Book(String ISBN, String name, int numberOfPages, String language, String publisher, ArrayList authors) {
+    public Book(String ISBN, String name, int numberOfPages, String language, String publisher, ArrayList authors, String category) {
         this.ISBN = ISBN;
         this.name = name;
         this.numberOfPages = numberOfPages;
         this.language = language;
         this.publisher = publisher;
         this.authors = authors;
+        this.category = category;
     }
 
     public String getISBN() {
@@ -63,6 +65,14 @@ public class Book  {
         this.language = language;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
@@ -75,6 +85,7 @@ public class Book  {
                 " || Pages: " + numberOfPages +
                 " || Language: " + language +
                 " || Publisher: " + publisher +
-                        " || Authors: " + authors;
+                        " || Authors: " + authors +
+                        " || Category: " + category;
     }
 }
