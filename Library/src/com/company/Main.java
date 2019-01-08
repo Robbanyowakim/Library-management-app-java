@@ -10,9 +10,14 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
         Main myApp = new Main();
         LibraryLogic libraryLogic = new LibraryLogic();
+
+        libraryLogic.readBook();
+        libraryLogic.readMember();
+        libraryLogic.readTransaction();
 
         int loop = 0;
         do {
