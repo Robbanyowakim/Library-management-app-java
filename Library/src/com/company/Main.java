@@ -18,6 +18,7 @@ public class Main {
         libraryLogic.readBook();
         libraryLogic.readMember();
         libraryLogic.readTransaction();
+        libraryLogic.readHistory();
 
         int loop = 0;
         do {
@@ -76,11 +77,13 @@ public class Main {
                     libraryLogic.writeBook();
                     libraryLogic.writeMember();
                     libraryLogic.writeTransaction();
+                    libraryLogic.writeHistory();
                     break;
                 case 17://load
                     libraryLogic.readBook();
                     libraryLogic.readMember();
                     libraryLogic.readTransaction();
+                    libraryLogic.readHistory();
                     break;
                 case 18://exit
                     System.out.println("Exiting...");

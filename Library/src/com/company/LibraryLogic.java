@@ -10,7 +10,7 @@ public class LibraryLogic {
     public ArrayList <Book> bookList = new ArrayList<>();
     public ArrayList <Member> memberList = new ArrayList<>();
     public ArrayList <Transaction> transactionList = new ArrayList<>();
-
+    public ArrayList <History> historyList = new ArrayList<>();
 
 
     public void showCategories(){
@@ -57,9 +57,7 @@ public class LibraryLogic {
                 System.out.println("No books in this category!");
             }
         }
-
     }
-
 
     public void addTransaction(){
         int bookIndex;
@@ -126,9 +124,11 @@ public class LibraryLogic {
 
 
         for (int i=0;i<memberList.size();i++){
+
             if (memberList.get(i).getSsn().equals(choice)){
                 System.out.println("Member ["+i+"] "+memberList.get(i));
                 System.out.println();
+
                 for (int j=0;j<transactionList.size();j++){
                     if (transactionList.get(j).getMemberIndex()==i){
                         System.out.println("Transaction [" + j + "]" + "                  Issued: " + transactionList.get(j).getTransactionDate() + " || Return date: " + transactionList.get(j).getDueDate());
@@ -136,6 +136,15 @@ public class LibraryLogic {
                         System.out.println();
                     }
                 }
+
+
+                    for (int l = 0; l < historyList.size(); l++) {
+                    if (historyList.get(l).getMember().getSsn().equals(choice)){
+                        System.out.println("Returned book ["+historyList.get(l).getBook().getName()+"] issue date ["+historyList.get(l).getDate()+"-"+historyList.get(l).getDuedate()+"]");
+                        System.out.println();
+                    }
+                }
+
             }
         }
 
@@ -143,11 +152,26 @@ public class LibraryLogic {
 
     public void returnBook(){
         int choice;
+
+        Book book;
+        Member member;
+        Date date;
+        Date duedate;
+
         System.out.println("You are about to return a book");
         printTransactions();
         System.out.println("Enter Transaction-number to return book:");
         choice = input.nextInt();
         input.nextLine();
+
+        book = bookList.get(transactionList.get(choice).getBookIndex());
+        member = memberList.get(transactionList.get(choice).getMemberIndex());
+        date = transactionList.get(choice).getTransactionDate();
+        duedate = transactionList.get(choice).getDueDate();
+
+        History history = new History(book,member,date,duedate);
+
+        historyList.add(history);
 
         transactionList.remove(choice);
         System.out.println("Success!");
@@ -494,7 +518,18 @@ public class LibraryLogic {
             ex.printStackTrace();
         }
     }
+    public void writeHistory(){
 
+        try {
+            FileOutputStream fos = new FileOutputStream("history.txt");
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(historyList);
+            oos.close();
+
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
     public void readBook(){
         try {
             FileInputStream fis = new FileInputStream("book.txt");
@@ -528,7 +563,17 @@ public class LibraryLogic {
             ex.printStackTrace();
         }
     }
+    public void readHistory(){
+        try {
+            FileInputStream fis = new FileInputStream("history.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            historyList = (ArrayList) ois.readObject();
+            ois.close();
 
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+    }
 
 }
 
